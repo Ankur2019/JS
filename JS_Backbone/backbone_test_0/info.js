@@ -1,6 +1,6 @@
 
 
-var pass=4;
+var pass = 4;
 
 /*
 MV* is Model-View-Whatever architecture.
@@ -173,25 +173,70 @@ callback: It is reference to the code and called with object as context.
 // It retrieves the attributes from each model in the collection.
 // The Backbone.js navigate method is used to update and save the application as URL. It can also be done by calling the route function.
 
+
+// $() function is as synonym for jQuery() in the popular jQuery Javascript framework. 
+// It returns a jQuery object (or objects), which includes much more than just a reference to the DOM element. 
+// Most of them also have a way to relinquish the $ so that it can be used with another library that uses it. 
+// In that case you use jQuery instead of $. In fact, $ is just a shortcut for jQuery
+// The $ represents the jQuery Function, and is actually a shorthand alias for jQuery
+
+// Content Delivery Network (CDN).
+
+// video tutorial
+
+// https://www.youtube.com/watch?v=Xj9QTgtwpbI&list=PL4CUYg-6qxdF1bQC60TpId5bkCcoekf0j&index=4
+// https://www.youtube.com/watch?v=SktK4hcQf10&list=PL4CUYg-6qxdF1bQC60TpId5bkCcoekf0j&index=10
+
+
+
+/*
+
+Backbone.js isn’t a true MVC framework and lacks controllers, but has routers for a similar purpose. 
+This isn’t really a fault. A controller tends to be most useful for client-server relationships because 
+the controllers on the server intercept the requests from the view on the client machine and dictate the actions that should be done, 
+but when everything is run in the client, the view can communicate directly with the model.
+
+Backbone connects everything to your existing back-end API through a RESTful JSON interface, 
+and can even synchronize with back ends that don’t support REST and JSON, though it takes a little tweaking.
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // cd /etc/NetworkManager/system-connections ls -la
 // sudo cat geekdesk
 // @N3r5d3vs.2014
+// g33kd35k@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// tigbuh.nerddevs.19
-
-// tigbuh.nerddevs.2019
+// git init
+// git status
+// git add .
+// git commit -m "First commit"
+// git remote add origin https://github.com/Ankur2019/JS
+// git pull https://github.com/Ankur2019/JS
+// git push origin master

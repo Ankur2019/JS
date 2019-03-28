@@ -77,6 +77,11 @@ Whenever the user hits the #employee/new route, it listens on the newEmployee ev
 Whenever the user hits the #employees/edit/:id route, it listens on the editEmployee event, and renders the edit form.
 
 
+
+The Window interface represents a window containing a DOM document; the document property points to the DOM document loaded in that window. 
+A window for a given document can be obtained using the document.defaultView property.
+A global variable, window, representing the window in which the script is running, is exposed to JavaScript code.
+
 */
 
 /*
