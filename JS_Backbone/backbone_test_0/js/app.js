@@ -48,7 +48,11 @@ window.EmployeeManager = {
           attrs.id = employees.isEmpty() ? 1 : (_.max(employees.pluck('id')) + 1);
           employees.add(attrs);
           
-          router.navigate('employees', true); // why? adding this true, is it not a default value
+          // if it is not used no change in both url and webpage
+          router.navigate('employees', true); // why didn't made this default!!
+          // router.navigate('employees', false); // if it is false url changes but page doesn't changes
+          // router.navigate('employees'); // works like false
+
         });
   
         $('.main-container').html(newEmployeeForm.render().$el);
@@ -71,7 +75,7 @@ window.EmployeeManager = {
   
           $('.main-container').html(editEmployeeForm.render().$el);
         } else {
-          router.navigate('employees', true);
+          // router.navigate('employees', true);
         }
       });
   
