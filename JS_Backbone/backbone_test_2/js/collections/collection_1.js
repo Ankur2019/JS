@@ -35,6 +35,7 @@ console.log(people.get(0));
 people.remove(person); // Joe
 console.log(people.toJSON());
 
+// resetting the collections
 people.reset([{name:"Bob", age:'20', height:'6 ft'}, {name:"Jim"}, person]);
 console.log(people.toJSON());
 
