@@ -93,11 +93,15 @@
         
     <script type="text/template" id="tpl-new-contact">
       <h2 class="page-header text-center"><%= isNew ? 'Create' : 'Edit' %> Employee </h2>
+
+      <!-- employee-form class is mentioned-->
+
       <form role="form" class="form-horizontal employee-form">
         <div class="form-group">
           <label class="col-sm-4 control-label">Full name:</label>
           <div class="col-sm-6">
-            <!-- employee-name-input  s referenced in views/employeeForm.js -->
+
+            <!-- employee-name-input  is referenced in views/employeeForm.js -->
             <input type="text" class="form-control employee-name-input" value="<%- name %>" required>
           </div>
         </div>
@@ -137,6 +141,7 @@
     <script src="js/collections/employees.js"></script>
     <script src="js/views/employee.js"></script>
     <script src="js/views/employees.js"></script>
+
     <script src="js/views/employeeForm.js"></script>
     <script src="js/router.js"></script>
 

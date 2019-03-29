@@ -227,7 +227,7 @@ and can even synchronize with back ends that don’t support REST and JSON, thou
 
 
 
-
+// cd /media/nerddevs/New Volume/Ankur2019/JS
 // cd /etc/NetworkManager/system-connections ls -la
 // sudo cat geekdesk
 // @N3r5d3vs.2014

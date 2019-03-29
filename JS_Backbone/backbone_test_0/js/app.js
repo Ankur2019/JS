@@ -4,10 +4,18 @@ window.EmployeeManager = {
     Views: {},
   
     start: function(data) {
+
+      // EmployeeManager.Collections.Employees is in collections/employees.js
       var employees = new EmployeeManager.Collections.Employees(data.employees);
+
+      // EmployeeManager.Router is in router.js
       var router = new EmployeeManager.Router();
   
       router.on('route:home', function() {
+        // navigate method is used to update and save the application as URL
+        // triggers a redirect to the employees route
+        // replace:true the url will be updated, but it will NOT create a browser history entry ?? (it creats history)
+
         router.navigate('employees', {
           trigger: true,
           replace: true
@@ -15,22 +23,32 @@ window.EmployeeManager = {
       });
       
       router.on('route:showEmployees', function() {
+        
+        // EmployeeManager.Views.Employees is in views/employees.js
         var employeesView = new EmployeeManager.Views.Employees({
           collection: employees
         });
-  
+        
+        // main-container is a div class in index.html
         $('.main-container').html(employeesView.render().$el);
       });
   
+      
+      // EmployeeManager.Views.EmployeeForm is in views/empoyeeForm.js
+
       router.on('route:newEmployee', function() {
         var newEmployeeForm = new EmployeeManager.Views.EmployeeForm({
+          
+          // EmployeeManager.Models.Employee is in models/employee.js
           model: new EmployeeManager.Models.Employee()
         });
   
+        
         newEmployeeForm.on('form:submitted', function(attrs) {
           attrs.id = employees.isEmpty() ? 1 : (_.max(employees.pluck('id')) + 1);
           employees.add(attrs);
-          router.navigate('employees', true); // why?
+          
+          router.navigate('employees', true); // why? adding this true, is it not a default value
         });
   
         $('.main-container').html(newEmployeeForm.render().$el);
@@ -57,7 +75,8 @@ window.EmployeeManager = {
         }
       });
   
-      // Backbone.history.start() is used to allow the use of hashbangs for the routes.
+      // Backbone.history.start() is used to allow the use of hashangs for the routes.
+      // Backbone history is a global router that will keep track of the history and let us enable the routing in the application. 
 
       Backbone.history.start();
     }

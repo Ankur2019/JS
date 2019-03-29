@@ -2,19 +2,36 @@
 // This view is responsible for the list of employees on the page.
 
 EmployeeManager.Views.Employees = Backbone.View.extend({
+
+    // _.template() Parses a template to create a reusable template function.
+    // The html() method sets or returns the content (innerHTML) of the selected elements.
+
     template: _.template($('#tpl-contacts').html()),
 
 
     renderOne: function(employee) {
-      var itemView = new EmployeeManager.Views.Employee({model: employee});
-      this.$('.contacts-container').append(itemView.render().$el); // what means by $('.contacts-container')? is it identifier ?
+      
+      // EmployeeManager.Views.Employee is in views/employee.js
+
+      var itemView = new EmployeeManager.Views.Employee({model: employee}); // where is this employee model ? 
+
+      // contacts-container is in index.html in ul class for id="tpl-contacts"
+      this.$('.contacts-container').append(itemView.render().$el); 
     },
   
     render: function() {
+      
       var html = this.template();
+      
+      // el is just an identifier and it refers to an element, a DOM element,
+      // this.$el is a cached reference to the jQuery (or Zepto) object
+
       this.$el.html(html);
-  
-      this.collection.each(this.renderOne, this); // why adding this last 'this'
+      
+      // to iterate through a collection each() method provided by Underscore.js.
+      // have three arguments: (element, index, list)
+
+      this.collection.each(this.renderOne, this); // adding this last 'this' ?
   
       return this;
     }
