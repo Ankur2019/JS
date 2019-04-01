@@ -28,7 +28,7 @@ EmployeeManager.Views.Employee = Backbone.View.extend({
 
     render: function() { 
 
-        // _.template() Parses a template to create a reusable template function.
+        // _.template() Parses a template to create a reusable template function. 
         
         var html = this.template(this.model.toJSON()); 
         

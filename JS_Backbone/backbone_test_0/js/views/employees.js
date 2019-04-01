@@ -13,7 +13,7 @@ EmployeeManager.Views.Employees = Backbone.View.extend({
       
       // EmployeeManager.Views.Employee is in views/employee.js
 
-      var itemView = new EmployeeManager.Views.Employee({model: employee}); // where is this employee model ? 
+      var itemView = new EmployeeManager.Views.Employee({model: employee}); // employee model is found as parameter of renderOne
 
       // contacts-container is in index.html in ul class for id="tpl-contacts"
       this.$('.contacts-container').append(itemView.render().$el); 
