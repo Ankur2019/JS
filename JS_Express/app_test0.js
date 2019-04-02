@@ -221,7 +221,7 @@ Express GEnerator:
 npm install express-generator -g
 cd app_test1
 npm install
-npm install --save-dev nodemon
+npm install --save-dev nodemon (needed to add devstart in package.json)
 DEBUG=app_test1:* npm start
 DEBUG=app_test1:* npm run devstart
 
