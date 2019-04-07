@@ -1,0 +1,65 @@
+Commands:
+
+
+npx create-react-app app_test0
+cd my-app
+npm start
+
+
+....................
+https://reactjs.org/docs/optimizing-performance.html#use-the-production-build
+
+Create React App
+If your project is built with Create React App, run:
+
+npm run build
+This will create a production build of your app in the build/ folder of your project.
+Remember that this is only necessary before deploying to production. For normal development, use npm start.
+
+....................
+
+-> To check for open ports in linux
+
+netstat -atu
+
+
+
+.....................
+
+https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3
+
+n production, it is recommended to minify any JavaScript code that is included with your application. Minification can help your website load several times faster, especially as the size of your JavaScript source code grows.
+
+Here's one way to set it up:
+
+Install Node.js
+Run npm init -y in your project folder (don't skip this step!)
+Run npm install terser
+Now, to minify a file called like_button.js, run in the terminal:
+
+npx terser -c -m -o like_button.min.js -- like_button.js
+
+This will produce a file called like_button.min.js with the minified code in the same directory. If you're typing this often, you can create an npm script to give this command a name.
+
+
+
+.......................
+
+
+https://reactjs.org/docs/add-react-to-a-website.html
+
+Add JSX to a Project
+Adding JSX to a project doesn’t require complicated tools like a bundler or a development server. Essentially, adding JSX is a lot like adding a CSS preprocessor. The only requirement is to have Node.js installed on your computer.
+
+Go to your project folder in the terminal, and paste these two commands:
+
+Step 1: Run npm init -y (if it fails, here’s a fix)
+Step 2: Run npm install babel-cli@6 babel-preset-react-app@3
+
+
+
+Create a folder called src and run this terminal command:
+
+npx babel --watch src --out-dir . --presets react-app/prod 
+
+
