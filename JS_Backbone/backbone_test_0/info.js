@@ -239,4 +239,5 @@ and can even synchronize with back ends that don’t support REST and JSON, thou
 // git commit -m "First commit"
 // git remote add origin https://github.com/Ankur2019/JS
 // git pull https://github.com/Ankur2019/JS
-// git push origin master
+// git checkout master (remote branch name)
+// git push origin (local branch name) master
