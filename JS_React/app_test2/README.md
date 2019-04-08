@@ -1,14 +1,10 @@
-Create React App using
-
-### npx create-react-app react-tutorial
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+(Optional - to create forms) npm install formik --save
 
 ## Available Scripts
 
 In the project directory, you can run:
-
-### sudo kill $(sudo lsof -t -i:3000) -> for killing process at 3000 if npm start gives error of this may not be a npm error
 
 ### `npm start`
 
