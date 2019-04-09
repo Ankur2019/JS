@@ -1,3 +1,5 @@
+# https://digitizor.com/gitignore-not-ignoring-files-how-to-fix/
+
 /JS_Express/app_test1/node_modules
 
 /JS_Express/backbone-express-boilerplate/node_modules
