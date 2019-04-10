@@ -1,0 +1,2 @@
+mongo "mongodb+srv://sandbox-51jrt.mongodb.net/test" --username m001-student --password m001-mongodb-basics
+
