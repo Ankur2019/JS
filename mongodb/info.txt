@@ -7,7 +7,10 @@ mongo "mongodb+srv://m220student:m220password@mflix-lh3b0.mongodb.net/test?retry
 
 # import data into Atlas
 mongorestore --drop --gzip --uri \
-  "mongodb+srv://m220student:m220password@<YOUR_CLUSTER_URI>" data
+
+  "mongodb+srv://m220student:m220password@<YOUR_CLUSTER_URI>" 
+  
+  data
 
 
 

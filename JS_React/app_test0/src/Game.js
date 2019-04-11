@@ -6,7 +6,7 @@ import Board from './Board';
 class Game extends React.Component {
 
     constructor(props) {
-      console.log('in class Game extends React.Component');
+      console.log('in class Game extends React.Component Constructor');
       super(props);
       this.state = {
         history: [{
@@ -20,7 +20,7 @@ class Game extends React.Component {
     }
   
     handleClick(i) {
-      console.log('in handleClick(i)');
+      console.log('in handleClick '+ i);
       
       const history = this.state.history.slice(0, this.state.stepNumber + 1);
       const current = history[history.length - 1];
@@ -28,18 +28,18 @@ class Game extends React.Component {
       const windata = calculateWinner(current.squares);
       const winner = windata.won;
 
-    //   if (calculateWinner(squares) || squares[i]) {
-      if (winner !== null || squares[i]) {
-        
-        // final winner doesn't come to this state, it comes when a click is done here
-        if(winner !== null) {
-            this.setState({
-                win_square: [windata.a, windata.b, windata.c],
-            });
-            console.log("in game handleclick win square = " + this.state.win_square);
-        }
+      if (winner !== null) {
+        this.setState({
+            win_square: [windata.a, windata.b, windata.c],
+        });
         return;
       }
+
+    //   if (calculateWinner(squares) || squares[i]) {
+      if (squares[i]) {
+        return;
+      }
+      
       squares[i] = this.state.xIsNext ? 'X' : 'O';
       this.setState({
         history: history.concat([{
@@ -49,7 +49,6 @@ class Game extends React.Component {
         xIsNext: !this.state.xIsNext,
         win_square: Array(3).fill(null),
       });
-    //   console.log(this.state.win_square);
     }
   
     jumpTo(step) {
@@ -67,9 +66,12 @@ class Game extends React.Component {
     }
     
     win_square_change(windata) {
+      console.log("in win square change = " + this.state.win_square);
+      if (this.state.win_square[0]===null) {
         this.setState({
-            win_square: [windata.a, windata.b, windata.c],
+          win_square: [windata.a, windata.b, windata.c],
         });
+      }
     }
 
     render() {
@@ -93,11 +95,16 @@ class Game extends React.Component {
       const moves =  (this.state.mov_asc) ? mov.slice(0, mov.length) : (mov.slice(0, mov.length)).reverse();
 
   
+      console.log('In render');
       let status, font_color = 'black';
       if (winner) {
         status = 'Winner: ' + winner;
         font_color = 'red';
-        // this.win_square_change(windata);
+
+        let change = function myFunc(windata) {console.log('walk '); return this.win_square_change(windata)};
+
+        this.win_square_change(windata);
+        console.log(change);
       } 
       else if(this.state.stepNumber===9) {
         status = 'Game is Drawn';
@@ -112,8 +119,8 @@ class Game extends React.Component {
           <div className="game-board">
             <Board key={'board_' + this.state.stepNumber} //
               squares={current.squares}
-              win_square={this.state.win_square}
               onClick={(i) => this.handleClick(i)}
+              win_square={this.state.win_square}
             />
           </div>
           <div className="game-info">
