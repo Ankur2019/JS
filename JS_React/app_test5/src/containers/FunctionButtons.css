@@ -1,0 +1,27 @@
+*{
+	outline: none;
+	box-sizing: border-box;
+}
+.FunctionButtons{
+	background:linear-gradient(to right,purple,red);
+	width: 85%;
+  margin: 0 auto;
+	display: none;
+}
+.FunctionButtons.show{
+	display: block;
+	transition: height 3s;
+}
+
+.F_button{
+	float: right;
+	margin:0.7rem 1rem;
+	border:none;
+	border-radius: 3px;
+	padding: auto 0.5rem;
+	background:initial;
+}
+.F_button i{
+	font-size: 20px;
+	color: white;
+}

@@ -1,9 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
-// import App from './Api'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'))
-
-// https://www.taniarascia.com/getting-started-with-react/
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
