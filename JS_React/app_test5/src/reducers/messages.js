@@ -8,7 +8,14 @@ export default function messages(state = getMessages(10), action) {
     case SEND_MESSAGE:
       const { message, userId } = action.payload;
       const allUserMsgs = state[userId];
-      const containsReply = store.getState().chatBoxContainReply[0];
+
+      
+      // const containsReply = store.getState().chatBoxContainReply[0];
+      // Give this error
+      // You may not call store.getState() while the reducer is executing. 
+      // The reducer has already received the state as an argument. Pass it down from the top reducer instead of reading it from the store.
+
+
       const arrayView = _.values(allUserMsgs);
       const editedTrue = arrayView.filter(item=>{
         return item.edited === true;
@@ -33,7 +40,8 @@ export default function messages(state = getMessages(10), action) {
             text: messageToWrite.replace(" -f",""),
             is_user_msg: userMessage,
             edited:false,
-            containReply:containsReply,
+            // containReply:containsReply,
+            containReply:true,
           }
         }
       };

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Chats.css";
 import store from "../store";
 import {setEditMessage,deleteMessage,showOptions} from "../actions";
+
 const Chat = ({ message,activeUser }) => {
   const { text, is_user_msg, containReply, number} = message;
   return (
@@ -61,6 +62,13 @@ const handleUserMessageEdit = (event) =>{
   const activeUser = event.target.dataset.active;
   store.dispatch(setEditMessage(messageToEdit,activeUser,number));
 }
+
+
+
+
+
+
+
 
 class Chats extends Component {
   constructor(props){

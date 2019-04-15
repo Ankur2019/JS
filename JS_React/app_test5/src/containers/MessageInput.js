@@ -9,7 +9,10 @@ const MessageInput = ({ value }) => {
   const handleSubmit = e => {
       e.preventDefault();
       const { typing, activeUserId } = state;
+      
       store.dispatch(sendMessage(typing, activeUserId));
+
+      
     };
 
   const handleChange = e => {

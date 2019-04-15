@@ -1,24 +1,19 @@
 // import React, { Component } from 'react'
 import React from 'react';
 import Board from './Board';
+import store from "./store";
+import _ from "lodash";
+
+import {set_stepnumber} from "./actions";
+import {set_history} from "./actions";
+import {set_mov} from "./actions";
+import {set_x} from "./actions";
+import {set_win_square} from "./actions";
+import {set_choice} from "./actions";
+
 
 
 class Game extends React.Component {
-
-  constructor(props) {
-    console.log('in class Game extends React.Component Constructor');
-    super(props);
-    this.state = {
-      history: [{
-        squares: Array(9).fill(null),
-      }],
-      stepNumber: 0,
-      xIsNext: true,
-      mov_asc: true,
-      win_square: Array(3).fill(null),
-      choice: 0,
-    };
-  }
 
   // Choice the suitable plauing square by computer
   computer(squares) {
@@ -36,6 +31,8 @@ class Game extends React.Component {
 
   handleClick(i) {
     // console.log('in handleClick '+ i);
+
+    this.state = store.getState();
     
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
@@ -53,9 +50,11 @@ class Game extends React.Component {
 
     // when we allready have a winner, new click won't effect
     if (winner !== null) {
-      this.setState({
-          win_square: [windata.a, windata.b, windata.c],
-      });
+
+      store.dispatch(set_win_square(windata));
+      // this.setState({
+      //     win_square: [windata.a, windata.b, windata.c],
+      // });
       return;
     }
 
@@ -72,13 +71,17 @@ class Game extends React.Component {
     winner = windata.won;
 
     if (winner !== null) {
-      this.setState({
-        history: history.concat([{
-          squares: squares
-        }]),
-        stepNumber: history.length,  
-        win_square: [windata.a, windata.b, windata.c],
-      });
+      store.dispatch(set_history(history, squares));
+      store.dispatch(set_stepnumber(history.length));
+      store.dispatch(set_win_square(windata));
+
+      // this.setState({
+      //   history: history.concat([{
+      //     squares: squares
+      //   }]),
+      //   stepNumber: history.length,  
+      //   win_square: [windata.a, windata.b, windata.c],
+      // });
       return;
     }
 
@@ -93,58 +96,89 @@ class Game extends React.Component {
     winner = windata.won;
 
     // check if chamge made by computer made him win
-    let val = (winner !== null) ? [windata.a, windata.b, windata.c] : Array(3).fill(null) ;
+    let val = (winner !== null) ? windata : Array(3).fill(null) ;
     // if opponent is computer xIsNext is always true
     let tmp = (this.state.choice === 1) ? true : !this.state.xIsNext ;
 
+    store.dispatch(set_history(history, squares));
+    store.dispatch(set_stepnumber(history.length));
+    store.dispatch(set_win_square(windata));
+    store.dispatch(set_x(tmp));
 
-    this.setState({
-      history: history.concat([{
-        squares: squares
-      }]),
-      stepNumber: history.length,
-      win_square: val,
-      xIsNext: tmp,
-    });
+    // this.setState({
+    //   history: history.concat([{
+    //     squares: squares
+    //   }]),
+    //   stepNumber: history.length,
+    //   win_square: val,
+    //   xIsNext: tmp,
+    // });
 
   }
 
   // for jumping previous steps
   jumpTo(step) {
-    this.setState({
-      stepNumber: step,
-      win_square: Array(3).fill(null),
-    });
+
+    this.state = store.getState();
+
+    store.dispatch(set_stepnumber(step));
+    
+    let windata = {"a":null, "b":null, "c":null, "won": null};
+
+    store.dispatch(set_win_square(windata));
+
+    // this.setState({
+    //   stepNumber: step,
+    //   win_square: Array(3).fill(null),
+    // });
 
     let val = (this.state.choice === 1) ? true : (step % 2) === 0;
-    this.setState({xIsNext: val});
+    store.dispatch(set_x(val));
+    // this.setState({xIsNext: val});
     
   }
 
   // toggle the move list between ascending & descending 
   mov_toggle() {
-    this.setState({
-        mov_asc: !this.state.mov_asc,
-    });
+    this.state = store.getState();
+    store.dispatch(set_mov(!this.state.mov_asc));
+    // this.setState({
+    //     mov_asc: !this.state.mov_asc,
+    // });
 
   }
 
   // when a player is choosed board goes to initial state
   choice_toggle(i) {
-    this.setState({
-      history: [{
-        squares: Array(9).fill(null),
-      }],
-      stepNumber: 0,
-      xIsNext: true,
-      mov_asc: true,
-      win_square: Array(3).fill(null),
-      choice: i,
-    });
+    this.state = store.getState();
+
+    store.dispatch(set_choice(i));
+    
+    // this.setState({
+    //   history: [{
+    //     squares: Array(9).fill(null),
+    //   }],
+    //   stepNumber: 0,
+    //   xIsNext: true,
+    //   mov_asc: true,
+    //   win_square: Array(3).fill(null),
+    //   choice: i,
+    // });
   }
 
   render() {
+
+    this.state = store.getState();
+
+    // let step = new_state.stepNumber;
+
+    // console.log(this.state + ' state is ' + new_state + " hi " + step);
+    // console.log(this.state);
+    // console.log(new_state);
+
     const history = this.state.history;
+    console.log('In history');
+    console.log(history);
     const current = history[this.state.stepNumber];
     const windata = calculateWinner(current.squares);
     const winner = windata.won;
