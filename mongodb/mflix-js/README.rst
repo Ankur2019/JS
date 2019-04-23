@@ -2,6 +2,9 @@
 Mflix
 =====
 
+# to connect in mongo shell
+mongo "mongodb+srv://m220student:m220password@mflix-lh3b0.mongodb.net/test?retryWrites=true"
+
 This is a short guide on setting up the system and environment dependencies
 required for the MFlix application to run.
 
