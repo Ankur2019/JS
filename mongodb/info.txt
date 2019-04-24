@@ -4,8 +4,10 @@ mongodb+srv://Admin0:<password>@mflix-lh3b0.mongodb.net/test?retryWrites=true
 
 
 
-mongo "mongodb+srv://m220student:m220password@mflix-lh3b0.mongodb.net/test?retryWrites=true"
+mongo "mongodb+srv://mflixAppUser:mflixAppPwd@mflix-lh3b0.mongodb.net/test?retryWrites=true"
 
+
+mongo "mongodb+srv://m220student:m220password@mflix-lh3b0.mongodb.net/test?retryWrites=true"
 
 mongo "mongodb+srv://mflix-lh3b0.mongodb.net/test" --username m220student --password m220password
 
