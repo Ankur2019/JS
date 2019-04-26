@@ -12,12 +12,13 @@ export const set_history = (history, squares) => ({
     payload: {history, squares}
 });
 
-export const set_stepnumber = step => ({
+export const set_stepNumber = step => ({
     type: SET_STEPNUMBER,
     payload: step
 });
 
-export const set_mov = val => ({
+
+export const set_mov_asc = val => ({
     type: SET_MOV,
     payload: val
 });
@@ -32,7 +33,7 @@ export const set_choice = val => ({
     payload: val
 });
 
-export const set_x = val => ({
+export const set_xIsNext = val => ({
     type: SET_X,
     payload: val
 });

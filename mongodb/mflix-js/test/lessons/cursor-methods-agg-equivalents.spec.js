@@ -175,3 +175,8 @@ describe("Cursor Methods and Aggregation Equivalents", async () => {
     )
   })
 })
+
+// Final Exam Answers
+// elections.find( { winner_party: "Republican", winner_electoral_votes: { "$gte": 160 } } )
+// phones.updateMany( { software_version: { "$lt": 4.0 } }, { "$set": { needs_to_update: true } } )
+// people_heights.find().sort({ height: -1 }).skip(3).limit(2)
